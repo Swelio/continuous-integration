@@ -1,0 +1,33 @@
+name: Devcontainer prebuilding
+
+on:
+  workflaw_call:
+    inputs:
+      imageName:
+        description: Image name for the pre-built devcontainer
+        required: true
+        type: string
+      imageTag:
+        default: latest
+        description: Image tag for the pre-built devcontainer
+        required: false
+        type: string
+
+    secrets:
+      GITHUB_TOKEN:
+        required: true
+
+jobs:
+  pre-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Pre-build devcontainer image
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ${{ inputs.imageName }}
+          imageTag: ${{ inputs.imageTag }}
+          noCache: true
+          push: true
+          subFolder: .github
