@@ -4,8 +4,9 @@ on:
   workflaw_call:
     inputs:
       imageName:
+        default: devcontainer
         description: Image name for the pre-built devcontainer
-        required: true
+        required: false
         type: string
       imageTag:
         default: latest
