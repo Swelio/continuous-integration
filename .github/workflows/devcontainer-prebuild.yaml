@@ -1,7 +1,7 @@
 name: Devcontainer prebuilding
 
 on:
-  workflaw_call:
+  workflow_call:
     inputs:
       imageName:
         default: devcontainer
