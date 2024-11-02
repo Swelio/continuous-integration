@@ -42,5 +42,5 @@ jobs:
           imageName: ${{ inputs.imageName }}
           imageTag: ${{ inputs.imageTag }}
           noCache: true
-          push: true
+          push: always
           subFolder: .github
