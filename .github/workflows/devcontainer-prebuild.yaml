@@ -4,9 +4,8 @@ on:
   workflow_call:
     inputs:
       imageName:
-        default: devcontainer
         description: Image name for the pre-built devcontainer
-        required: false
+        required: true
         type: string
       imageTag:
         default: latest
