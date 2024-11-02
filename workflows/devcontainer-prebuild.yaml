@@ -1,19 +1,18 @@
 name: Devcontainer prebuilding
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - .github/.devcontainer.json
-  pull_request:
-    branches:
-      - 'main'
-    paths:
-      - .github/.devcontainer.json
-  schedule:
-    - cron: '59 23 * * FRI'
+  workflaw_call:
+    inputs:
+      imageName:
+        default: devcontainer
+        description: Image name for the pre-built devcontainer
+        required: false
+        type: string
+      imageTag:
+        default: latest
+        description: Image tag for the pre-built devcontainer
+        required: false
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
