@@ -17,10 +17,11 @@ on:
         description: Path to the folder containing the devcontainer (the parent of `.devcontainer` folder or `.devcontainer.json` file)
         required: false
         type: string
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+      push:
+        default: true
+        description: If the image should be pushed or not
+        required: false
+        type: boolean
 
 jobs:
   pre-build:
@@ -43,5 +44,5 @@ jobs:
           imageName: ${{ inputs.imageName }}
           imageTag: ${{ inputs.imageTag }}
           noCache: true
-          push: always
+          push: ${{ inputs.push && 'always' || 'never' }}
           subFolder: ${{ inputs.subFolder }}
