@@ -44,5 +44,5 @@ jobs:
           imageName: ${{ inputs.imageName }}
           imageTag: ${{ inputs.imageTag }}
           noCache: true
-          push: ${{ inputs.push && 'always' || 'never' }}
+          push: ${{ fromJSON(inputs.push) && 'always' || 'never' }}
           subFolder: ${{ inputs.subFolder }}
