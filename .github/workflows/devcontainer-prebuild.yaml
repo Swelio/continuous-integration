@@ -12,6 +12,11 @@ on:
         description: Image tag for the pre-built devcontainer
         required: false
         type: string
+      subFolder:
+        default: .github
+        description: Path to the folder containing the devcontainer (the parent of `.devcontainer` folder or `.devcontainer.json` file)
+        required: false
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -39,4 +44,4 @@ jobs:
           imageTag: ${{ inputs.imageTag }}
           noCache: true
           push: always
-          subFolder: .github
+          subFolder: ${{ inputs.subFolder }}
